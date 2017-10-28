@@ -9,14 +9,14 @@ class Bill {
 	Map<Character, Integer> quantities = new HashMap<>();
 	
 	public Bill(String items) {
-		for (int i = 0; i < items.length(); i++) {
+		for (int i = 0; i < items.length(); i < n; i++) {
 			char item = items.charAt(i);
 			quantities.put(item, quantities.getOrDefault(item, 0)+1);
 		}
 	}
 
 	int getQuantity(char item) {
-		return quantities.getOrDefault(item, 0);
+		return quantities.get(item);
 	}
 
 	int value(Map<Character, SKU> skus) {
