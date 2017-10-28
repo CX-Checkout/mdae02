@@ -22,6 +22,7 @@ class Bill {
 	int value(Map<Character, SKU> skus) {
 		int result = 0;
 		for (Entry<Character, Integer> quantity : quantities.entrySet()) {
+			if (skus.containsKey())
 			result += skus.get(quantity.getKey()).valueOf(quantity.getValue());
 		}
 		return result;

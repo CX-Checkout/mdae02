@@ -12,4 +12,8 @@ public class CheckoutTest {
 		assertEquals(new Integer(180+75+40+30), Checkout.checkout("ACAAADBBCBD"));
 	}
 
+	@Test
+	public void testIllegalInput() {
+		assertEquals(new Integer(  -1), Checkout.checkout( ""));
+	}
 }
