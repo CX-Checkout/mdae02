@@ -16,15 +16,15 @@ class Bill {
 	}
 
 	int getQuantity(char item) {
-		return quantities.get(item);
+		return quantities.getOrDefault(item, 0);
 	}
 
 	int value(Map<Character, SKU> skus) {
 		int result = 0;
 		for (Entry<Character, Integer> quantity : quantities.entrySet()) {
 			if (skus.containsKey(quantity.getKey())) {
-				result += skus.get(quantity.getKey()).valueOf(quantity.getValue());
-			} else {
+				result += skus.get(quantity.getKey()).valueOf(quantity.getValue(), this);
+			}else {
 				return -1;
 			}
 		}

@@ -9,13 +9,15 @@ public class Checkout {
 	
 	static {
 		SKU sku = new SKU();
-		sku.addDeal(new Deal(1, 50));
+		sku.addDeal(new Deal(5, 200));
 		sku.addDeal(new Deal(3, 130));
+		sku.addDeal(new Deal(1, 50));
 		SKUS.put('A', sku);
 		
 		sku = new SKU();
-		sku.addDeal(new Deal(1, 30));
+		sku.addDeal(new Deal(1, 0, new Condition(2, 'E')));
 		sku.addDeal(new Deal(2, 45));
+		sku.addDeal(new Deal(1, 30));
 		SKUS.put('B', sku);
 		
 		sku = new SKU();
@@ -25,6 +27,10 @@ public class Checkout {
 		sku = new SKU();
 		sku.addDeal(new Deal(1, 15));
 		SKUS.put('D', sku);
+		
+		sku = new SKU();
+		sku.addDeal(new Deal(1, 40));
+		SKUS.put('E', sku);
 	}
     
 	public static Integer checkout(String items) {

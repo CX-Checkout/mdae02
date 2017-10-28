@@ -30,8 +30,8 @@ public class BillTest {
 		result.put('A', sku);
 		
 		sku = new SKU();
-		sku.addDeal(new Deal(1, 30));
 		sku.addDeal(new Deal(2, 45));
+		sku.addDeal(new Deal(1, 30));
 		result.put('B', sku);
 		
 		return result;

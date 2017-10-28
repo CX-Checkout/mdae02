@@ -4,10 +4,16 @@ public class Deal implements Comparable<Deal>{
 	
 	private int quantity;
 	private int price;
+	private ICondition condition;
 
 	Deal(int quantity, int price) {
+		this(quantity, price, new NullCondition());
+	}
+
+	Deal(int quantity, int price, ICondition condition) {
 		this.quantity = quantity;
 		this.price = price;
+		this.condition = condition;
 	}
 
 	int getPrice() {
@@ -22,6 +28,8 @@ public class Deal implements Comparable<Deal>{
 	public int compareTo(Deal o) {
 		return o.quantity - quantity;
 	}
-	
 
+	int getNumberOfApplications(int purchaseQuantity, Bill bill) {
+		return Math.min(purchaseQuantity/quantity, condition.getNumberOfApplications(bill));
+	}
 }

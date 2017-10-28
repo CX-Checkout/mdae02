@@ -1,7 +1,6 @@
 package befaster.solutions;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class SKU {
@@ -10,18 +9,15 @@ public class SKU {
 	
 	void addDeal(Deal deal) {
 		deals.add(deal);
-		Collections.sort(deals);
 	}
 
-	int valueOf(int purchaseQuantity) {
+	int valueOf(int purchaseQuantity, Bill bill) {
 		int result = 0;
 		for (Deal deal : deals) {
-			while (purchaseQuantity >= deal.getQuantity()) {
-				result += deal.getPrice();
-				purchaseQuantity -= deal.getQuantity();
-			}
+			int numberOfApplications = deal.getNumberOfApplications(purchaseQuantity, bill);
+			result += deal.getPrice() * numberOfApplications;
+				purchaseQuantity -= deal.getQuantity() * numberOfApplications;
 		}
 		return result;
 	}
-
 }

@@ -1,11 +1,11 @@
 package befaster.solutions;
 
-import befaster.runner.SolutionNotImplementedException;
-
 public class Sum {
 
     public static int sum(int x, int y) {
-        return x + y;
+        int sum = 0;
+        sum = x+y;
+        return sum;
     }
 
 }
