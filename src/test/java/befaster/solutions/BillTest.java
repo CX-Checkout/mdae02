@@ -25,8 +25,8 @@ public class BillTest {
 		Map<Character, SKU> result = new HashMap<>();
 		
 		SKU sku = new SKU();
-		sku.addDeal(new Deal(1, 50));
 		sku.addDeal(new Deal(3, 130));
+		sku.addDeal(new Deal(1, 50));
 		result.put('A', sku);
 		
 		sku = new SKU();

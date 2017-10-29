@@ -16,7 +16,7 @@ class Bill {
 	}
 
 	int getQuantity(char item) {
-		return quantities.get(item);
+		return quantities.getOrDefault(item, 0);
 	}
 
 	int value(Map<Character, SKU> skus) {
