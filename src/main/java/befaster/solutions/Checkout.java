@@ -31,6 +31,11 @@ public class Checkout {
 		sku = new SKU();
 		sku.addDeal(new Deal(1, 40));
 		SKUS.put('E', sku);
+		
+		sku = new SKU();
+		sku.addDeal(new Deal(3, 20));
+		sku.addDeal(new Deal(1, 10));
+		SKUS.put('F', sku);
 	}
     
 	public static Integer checkout(String items) {
