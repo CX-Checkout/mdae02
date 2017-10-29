@@ -17,6 +17,9 @@ public class CheckoutTest {
 	@Test
 	public void testConditions(){
 		assertEquals(new Integer(380+45+40+30+80), Checkout.checkout("ACAAEADBBCBDAAEAAA"));
+		assertEquals(new Integer(150), Checkout.checkout("RRRQ"));
+		assertEquals(new Integer(300), Checkout.checkout("RRRRRRQQ"));
+		assertEquals(new Integer(120), Checkout.checkout("NNNM"));
 	}
 	
 	@Test
