@@ -26,5 +26,10 @@ public class CheckoutTest {
 	public void testIllegalInput(){
 		assertEquals(new Integer(-1), Checkout.checkout("a"));
 	}
+	
+	@Test
+	public void testGropuDiscount(){
+		assertEquals(new Integer(135+17+20), Checkout.checkout("SSTTTXYZYYZ"));
+	}
 
 }

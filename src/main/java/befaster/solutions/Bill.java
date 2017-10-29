@@ -19,11 +19,17 @@ class Bill {
 		return quantities.getOrDefault(item, 0);
 	}
 
-	int value(Map<Character, SKU> skus) {
+	int value(Map<Character, SKU> skus, GroupDiscount groupDiscount) {
 		int result = 0;
+		
+		GroupDiscountResult groupDiscountResult = groupDiscount.apply(quantities, skus, this);
+		result += groupDiscountResult.getPrice();
+		HashMap<Character, Integer> discountedQuantities = groupDiscountResult.getQuantities();
+		
 		for (Entry<Character, Integer> quantity : quantities.entrySet()) {
 			if (skus.containsKey(quantity.getKey())) {
-				result += skus.get(quantity.getKey()).valueOf(quantity.getValue(), this);
+				Integer number = quantity.getValue() - discountedQuantities.getOrDefault(quantity.getKey(), 0);
+				result += skus.get(quantity.getKey()).valueOf(number, this);
 			}else {
 				return -1;
 			}

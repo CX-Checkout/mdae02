@@ -18,7 +18,16 @@ public class BillTest {
 	@Test
 	public void testBillValue(){
 		Bill bill = new Bill("AAAABBB");
-		assertEquals(180+75, bill.value(makeSKUs()));
+		assertEquals(180+75, bill.value(makeSKUs(), getGroupDiscount()));
+	}
+
+	private GroupDiscount getGroupDiscount() {
+		return new GroupDiscount(new char[]{}, 0, 0) {
+			@Override
+			GroupDiscountResult apply(Map<Character, Integer> quantities, Map<Character, SKU> skus, Bill bill){
+				return new GroupDiscountResult(new HashMap<>(), 0);
+			}
+		};
 	}
 
 	private Map<Character, SKU> makeSKUs() {

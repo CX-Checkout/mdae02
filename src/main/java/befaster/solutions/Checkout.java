@@ -7,6 +7,8 @@ public class Checkout {
 	
 	private static final Map<Character, SKU> SKUS = new HashMap<>();
 	
+	static final GroupDiscount GROUP_DISCOUNT = new GroupDiscount(new char[]{'S', 'T', 'X', 'Y', 'Z'}, 3, 45); 
+	
 	static {
 		SKU sku = new SKU();
 		sku.addDeal(new Deal(5, 200));
@@ -56,8 +58,8 @@ public class Checkout {
 		SKUS.put('J', sku);
 		
 		sku = new SKU();
-		sku.addDeal(new Deal(2, 150));
-		sku.addDeal(new Deal(1, 80));
+		sku.addDeal(new Deal(2, 120));
+		sku.addDeal(new Deal(1, 70));
 		SKUS.put('K', sku);
 		
 		sku = new SKU();
@@ -93,7 +95,7 @@ public class Checkout {
 		SKUS.put('R', sku);
 		
 		sku = new SKU();
-		sku.addDeal(new Deal(1, 30));
+		sku.addDeal(new Deal(1, 20));
 		SKUS.put('S', sku);
 		
 		sku = new SKU();
@@ -116,20 +118,20 @@ public class Checkout {
 		SKUS.put('W', sku);
 		
 		sku = new SKU();
-		sku.addDeal(new Deal(1, 90));
+		sku.addDeal(new Deal(1, 17));
 		SKUS.put('X', sku);
 		
 		sku = new SKU();
-		sku.addDeal(new Deal(1, 10));
+		sku.addDeal(new Deal(1, 20));
 		SKUS.put('Y', sku);
 		
 		sku = new SKU();
-		sku.addDeal(new Deal(1, 50));
+		sku.addDeal(new Deal(1, 21));
 		SKUS.put('Z', sku);
 		
 	}
     
 	public static Integer checkout(String items) {
-    	return new Bill(items).value(SKUS);
+    	return new Bill(items).value(SKUS, GROUP_DISCOUNT);
     }
 }
